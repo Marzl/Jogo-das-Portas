@@ -1,12 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
 :root {
-  --primary: #1e90ff;         /* Azul royal */
-  --accent: #87cefa;          /* Azul claro (sky blue) */
-  --dark: #0a0a23;            /* Azul bem escuro */
-  --bg-overlay: rgba(0, 0, 20, 0.85);
-  --shadow: 0 0 15px rgba(30, 144, 255, 0.6);
+  --primary: #0050ff; /* azul neon inspirado no Yoru */
+  --accent: #00f6ff;  /* ciano neon vibrante */
+  --dark: #060015; /* azul profundo */
+  --bg-overlay: rgba(0, 0, 30, 0.9);
+  --shadow: 0 0 20px rgba(0, 246, 255, 0.6);
   --transition: all 0.3s ease;
+  --neon-glow: 0 0 10px var(--accent), 0 0 20px var(--accent), 0 0 30px var(--primary);
 }
 
 * {
@@ -16,7 +17,7 @@
 }
 
 body {
-  background: url("https://i.postimg.cc/d3hL5d4f/yoru-valorant-1.avif") no-repeat center center fixed;
+  background: url("https://i.postimg.cc/4drSPWHM/Chat-GPT-Image-4-de-abr-de-2025-23-56-22.png") no-repeat center center fixed;
   background-size: cover;
   font-family: "Bebas Neue", sans-serif;
   color: var(--accent);
@@ -27,16 +28,52 @@ body {
   padding: 20px;
   position: relative;
   text-align: center;
-  justify-content: center
+  justify-content: center;
+  background-color: var(--dark);
 }
 
 body::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #000b2b 20%, rgba(30, 144, 255, 0.2) 100%);
-  backdrop-filter: blur(5px);
+  background: linear-gradient(135deg, #000b3a 10%, rgba(0, 246, 255, 0.1) 100%);
+  backdrop-filter: blur(8px);
   z-index: -1;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInZoom {
+  from {
+    opacity: 0;
+    transform: scale(1.2);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
 }
 
 .logo {
@@ -45,46 +82,50 @@ body::before {
   right: 20px;
   max-width: 150px;
   width: auto;
-  filter: drop-shadow(0 0 8px rgba(135, 206, 250, 0.5));
+  filter: drop-shadow(0 0 10px var(--accent));
   transition: var(--transition);
 }
 
 .logo:hover {
   transform: scale(1.05);
-  filter: drop-shadow(0 0 15px var(--accent));
+  filter: drop-shadow(0 0 20px var(--accent));
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   color: var(--primary);
-  margin: 20px 0;
-  text-shadow: 0 0 10px var(--accent);
+  margin: 30px 0 10px;
+  text-shadow: var(--neon-glow);
+  letter-spacing: 2px;
+  animation: fadeInZoom 1s ease forwards;
 }
 
 h2 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  color: #var(--accent);
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--primary);
   display: none;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.5s;
 }
 
 button {
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  background: linear-gradient(45deg, #87cefa, #1e90ff);
+  padding: 12px 30px;
+  font-size: 1.3rem;
+  background: linear-gradient(45deg, var(--accent), var(--primary));
   border: none;
-  border-radius: 10px;
+  border-radius: 15px;
   cursor: pointer;
   color: #000;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   transition: var(--transition);
   box-shadow: var(--shadow);
-}
-
-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px var(--accent);
+  letter-spacing: 1px;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.7s;
+  opacity: 0;
 }
 
 .container {
@@ -94,14 +135,15 @@ button:hover {
 .portas {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
   margin-top: 30px;
+  flex-wrap: wrap;
 }
 
 .porta {
   width: 100px;
   height: 150px;
-  background-color: #0a0a23;
+  background-color: var(--dark);
   border: 3px solid var(--primary);
   border-radius: 12px;
   display: flex;
@@ -112,31 +154,48 @@ button:hover {
   color: #fff;
   box-shadow: var(--shadow);
   transition: var(--transition);
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+.porta:nth-child(1) {
+  animation-delay: 1s;
+}
+
+.porta:nth-child(2) {
+  animation-delay: 1.2s;
+}
+
+.porta:nth-child(3) {
+  animation-delay: 1.4s;
 }
 
 .porta:hover {
   transform: scale(1.1);
-  background-color: #1a1a40;
+  background-color: #12124a;
 }
 
 .porta.revelada {
-  background-color: #003366;
-  border-color: #00bfff;
+  background-color: #001a33;
+  border-color: #00e0ff;
   font-size: 2.5rem;
   color: white;
 }
 
 .porta.passou {
-  background-color: #004080;
-  border-color: #00ced1;
+  background-color: #002a4d;
+  border-color: #00ffea;
   font-size: 2rem;
 }
 
 #mensagem {
-  font-size: 1.5rem;
-  margin-top: 25px;
+  font-size: 1.6rem;
+  margin-top: 30px;
   color: var(--accent);
-  text-shadow: 0 0 5px var(--primary);
+  text-shadow: 0 0 8px var(--primary);
+  animation: fadeInScale 1s ease forwards;
+  animation-delay: 1.6s;
+  opacity: 0;
 }
 
 .hidden {

@@ -1,2 +1,6 @@
-# Jogo-das-Portas
-Jogo das Portas desenvolvido como parte do projeto da Imersão DEV 2025 — um desafio interativo que une lógica, sorte e programação para aprimorar habilidades em HTML, CSS e JavaScript.
+# Jogo das Portas - Imersão DEV
+
+A Pen created on CodePen.
+
+Original URL: [https://codepen.io/Marcelo-Guedes-dos-Reis/pen/GgRemgj](https://codepen.io/Marcelo-Guedes-dos-Reis/pen/GgRemgj).
+
